@@ -17,6 +17,8 @@ No documentation yet. Simply:
     username: "something" # Optional
     password: "xyz" # Optional
 ```
+3. Copy integration files to <homeassistant config directory>\custom_components\vlc_remote
+
 To Do:
  - Async
  - Syncing

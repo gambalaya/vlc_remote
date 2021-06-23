@@ -1,8 +1,9 @@
 {
-  "domain": "vlc_remote",
-  "name": "VLC media player remote",
-  "documentation": "",
-  "requirements": [],
-  "dependencies": [],
-  "codeowners": []
+  "domain":        "vlc_remote",
+  "name":          "VLC Media Player Remote",
+  "documentation": "https://github.com/gambalaya/vlc_remote",
+  "requirements":  [],
+  "dependencies":  [],
+  "codeowners":    [],
+  "version":       "1.0.0"
 }

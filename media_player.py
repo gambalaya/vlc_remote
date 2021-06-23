@@ -33,7 +33,7 @@ import voluptuous as vol
 from homeassistant.components.media_player import (
     SUPPORT_PAUSE, PLATFORM_SCHEMA, SUPPORT_SEEK,
     SUPPORT_VOLUME_SET, SUPPORT_PLAY, SUPPORT_PLAY_MEDIA, ATTR_MEDIA_ENQUEUE,
-    SUPPORT_VOLUME_MUTE, SUPPORT_STOP, MediaPlayerDevice)
+    SUPPORT_VOLUME_MUTE, SUPPORT_STOP, MediaPlayerEntity)
 from homeassistant.const import (
     STATE_OFF, STATE_PLAYING, STATE_PAUSED, STATE_UNKNOWN, STATE_IDLE,
     CONF_NAME, CONF_HOST, CONF_PORT, CONF_PASSWORD, CONF_USERNAME)
@@ -68,7 +68,7 @@ def setup_platform(hass, config, async_add_devices, discovery_info=None):
                                  config.get(CONF_PASSWORD, DEFAULT_PASSWORD))])
 
 
-class VlcServer(MediaPlayerDevice):
+class VlcServer(MediaPlayerEntity):
     """Representation of a VLC server."""
 
     def __init__(self, name, host, port, username, password):

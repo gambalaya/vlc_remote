@@ -17,11 +17,27 @@ rest_command:
     password: "test"
 ```
 
-2. Minimal Universal Media Player configuration:
+2. Example rest sensor:
 ```
-  - platform: universal
+sensor:
+  - platform: rest
+    resource: http://:test@bookshelf.local:9090/requests/status.xml
+    name:     vlc
+    scan_interval: 60
+    value_template: '{{ value_json.root.state }}'
+    json_attributes_path: "$.root"
+    json_attributes:
+      - volume
+```
+
+3. Minimal Universal Media Player configuration:
+```
+media_player:
+- platform: universal
     name: vlc
-    state_template: "on"
+    attributes:
+      state: sensor.vlc
+      volume_level: sensor.vlc|volume
     commands:
       play_media:
         service: rest_command.play_media
@@ -33,16 +49,17 @@ rest_command:
           command: "command=pl_stop"
 ```
 
-Note that I no longer maintain this integration since the Universal Media Player can accomplish
-the same thing. The initial version was borrowed heavily from Squeezebox setup by Kingo55.
+The initial version of this integration was borrowed heavily from Squeezebox by Kingo55.
+Since the Universal Media Player can accomplish the same thing, I no longer maintain it.
 
 To configure the custom integration:
 
 1. Enable HTTP interface in VLC, taking note of user/pass and port.
 
-2. Add the following under "media_player":
+2. Add the following:
 ```
-  - platform: vlc_remote
+media_player:
+- platform: vlc_remote
     host: 192.168.0.2
     port: 8080
     name: "HTPC VLC" # Optional
